@@ -20,11 +20,12 @@ public class Price {
      *
      *
      * @param price The orig price of the item
+     * @param daysStable The number of days at this price or reduced prise
      * @return true if the, otherwise false
      */
     public void initCondtions(float price, int daysStable) {
-        this.price          = price;
-        this.daysStable     = daysStable;
+        this.price = price;
+        this.daysStable = daysStable;
     }
 
     /**
@@ -52,10 +53,16 @@ public class Price {
         if (daysStable < 30) {
             return false;
         }
-        
+
         return true;
     }
-    
+
+    /**
+     * promotionStillValid true
+     *
+     *
+     * @return true if the reduced price is still valid, otherwise false
+     */
     public Boolean promotionStillValid() {
 
         if (daysStable > 30) {
@@ -63,26 +70,45 @@ public class Price {
         }
         return true;
     }
-    
-      /**
-     *   Days remaining
+
+    /**
+     * Days remaining
      *
      *
-     * @return  number of days remaining in the promotion
+     * @return number of days remaining in the promotion
      */
     public int daysRemaining() {
 
         return 30 - daysStable;
     }
 
+    /**
+     * PriceIncrease
+     *
+     * @param New Price
+     */
+    public void priceIncrease(float price) {
 
-public void priceIncrease  (float price){
-    reducedPrice = 0.0F;
-}  
+        this.price = price;
+        reducedPrice = 0.0F;
+    }
 
+    /**
+     * getReducedPrice
+     *
+     * @return reduced price
+     */
+    public float getReducedPrice() {
+        return reducedPrice;
+    }
 
-public float getReducedPrice(){
-    return reducedPrice;
+    /**
+     * getPrice
+     *
+     * @return price
+     */
+    public float getPrice() {
+        return price;
+    }
+
 }
-}
-
