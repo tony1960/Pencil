@@ -33,9 +33,15 @@ public class Price {
 
     /**
      * Checks price reduction for validity
-     *
-     *
-     * @param reducedPrice The new reduced price
+     * Price is valid if is reduced by at least  5% but at most 30% and 
+     * The price has been stable at least 30 days.
+     * Promotions last for 30 days
+     * Further promotion don't extend time
+     * If and additional promotion reduces price to less than 30% promotion is
+     * canceled
+     * 
+     * 
+     * 
      * @return true if activation is allowed , otherwise false
      */
     public Boolean priceReduction(Float reducedPrice) {
@@ -93,13 +99,15 @@ public class Price {
 
     /**
      * PriceIncrease
-     *
+     * Price is increase and promotion is canceled
+     *  Days at stable price reset
      * @param New Price
      */
     public void priceIncrease(float price) {
 
         this.price = price;
         reducedPrice = 0.0F;
+        daysStable = 0;
     }
 
     /**
@@ -113,8 +121,8 @@ public class Price {
 
     /**
      * getPrice
-     *
-     * @return price
+     * Testing aid
+     * @return current price
      */
     public float getCurrentPrice() {
         if ((reducedPrice > 0) && (daysStable <= 30)) {
@@ -124,15 +132,33 @@ public class Price {
         return price;
     }
 
+    /**
+     * getPrice
+     * Testing aid
+     * @return price
+     */
+    
     public float getPrice() {
 
         return price;
     }
+    
+    /**
+     * getDaysStable
+     * Testing aid
+     * @return daysStable
+     */
 
     public int getDaysStable() {
         return daysStable;
     }
 
+    
+    /**
+     * setSaysStable
+     * @parem  daysStable
+     * Testing aid
+     */
     public void setDaysStable(int daysStable) {
         if (daysStable > 30) {
             reducedPrice = 0.0F;
