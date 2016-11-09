@@ -46,8 +46,9 @@ public class Price {
         low = price * .70F;
 
         if (reducedPrice.compareTo(low) < 0) {
-            if (this.reducedPrice > 0) {
-
+            if (this.reducedPrice > 0.0F) {
+                this.reducedPrice = 0.0F;
+                daysStable = 0;
             }
             return false;
         }
