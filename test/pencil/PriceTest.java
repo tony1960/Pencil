@@ -17,22 +17,26 @@ import static org.junit.Assert.*;
  * @author tonys
  */
 public class PriceTest {
-    
+
+    Price instance;
+
     public PriceTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        instance = new Price();
+
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -40,11 +44,26 @@ public class PriceTest {
     @Test
     public void testPriceReduction() {
         System.out.println("priceReduction");
-        Price instance = new Price();
         instance.initCondtions(10);
         Boolean result = instance.priceReduction(9.0F);
         assertTrue("True means activation can occur", result);
     }
 
-    
+    @Test
+    public void testPriceReductionFalseHigh() {
+        System.out.println("priceReduction");
+        instance.initCondtions(10);
+        Boolean result = instance.priceReduction(9.6F);
+        assertFalse("True mean activation can not occur", result);
+    }
+
+    @Test
+    public void testPriceReductionLowerBound() {
+        System.out.println("priceReductionLowerBound");
+        instance.initCondtions(10);
+
+        Boolean result = instance.priceReduction(7.0F);
+        assertTrue("True mean activation can occur", result);
+    }
+
 }
