@@ -41,6 +41,7 @@ public class PriceTest {
     public void tearDown() {
     }
 
+    /*
     @Test
     public void testPriceReduction() {
         System.out.println("priceReduction");
@@ -146,24 +147,34 @@ public class PriceTest {
         assertTrue("ReductedPrice is reset", reducted);
     }
 
+    
+    */
+    
+    
     @Test
     public void testPriceFurtherReductionLow() {
-        System.out.println("testPriceFurtherReduction");
+        System.out.println("testPriceFurtherReductionLow");
         instance.initCondtions(9.0F, 31);
 
         Float expectedValue = 9.0F;
-        Boolean result = instance.priceReduction(1.0F);
-        int promotionDays = instance.daysRemaining();
+        Boolean result = instance.priceReduction(8.0F);
+        
+        result = instance.priceReduction(1.0F);
+
         Boolean priceResult = false;
         Float price = instance.getCurrentPrice();
         if (expectedValue.compareTo(price) == 0) {
             priceResult = true;
         }
+        int expectedDays  = 0;
+        int days = instance.getDaysStable();
+        assertEquals(expectedDays, days);
         assertTrue("ReductedPrice is reset", priceResult);
     }
     
     @Test
     public void testSetNewPromotion (){
+        
         
     }
 
