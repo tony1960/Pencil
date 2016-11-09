@@ -6,6 +6,9 @@
 package pencil;
 
 /**
+ * This object maintains price & the reduced Price. Its most of its methods
+ * return true or false depending on if a red pencil price reduction and take
+ * place.
  *
  * @author tonys
  */
@@ -43,6 +46,9 @@ public class Price {
         low = price * .70F;
 
         if (reducedPrice.compareTo(low) < 0) {
+            if (this.reducedPrice > 0) {
+
+            }
             return false;
         }
 
@@ -107,7 +113,16 @@ public class Price {
      *
      * @return price
      */
+    public float getCurrentPrice() {
+        if ((reducedPrice > 0) && (daysStable <= 30)) {
+            return reducedPrice;
+        }
+
+        return price;
+    }
+    
     public float getPrice() {
+       
         return price;
     }
 
