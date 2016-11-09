@@ -49,6 +49,14 @@ public class PriceTest {
         assertTrue("True means activation can occur", result);
     }
 
+       @Test
+    public void testPriceReductionUpperBound() {
+        System.out.println("priceReductionUpperBound");
+        instance.initCondtions(10);
+        Boolean result = instance.priceReduction(9.5F);
+        assertTrue("True mean activation can occur", result);
+    }
+
     @Test
     public void testPriceReductionFalseHigh() {
         System.out.println("priceReduction");
@@ -58,12 +66,20 @@ public class PriceTest {
     }
 
     @Test
+    public void testPriceReductionLow() {
+        System.out.println("priceReductionLowerBound");
+        instance.initCondtions(10);
+
+        Boolean result = instance.priceReduction(5.0F);
+        assertFalse("True mean activation can not occur", result);
+    }
+
+    @Test
     public void testPriceReductionLowerBound() {
         System.out.println("priceReductionLowerBound");
         instance.initCondtions(10);
 
-        Boolean result = instance.priceReduction(7.0F);
+        Boolean result = instance.priceReduction(7.5F);
         assertTrue("True mean activation can occur", result);
     }
-
 }
