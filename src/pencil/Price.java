@@ -133,4 +133,10 @@ public class Price {
         return daysStable;
     }
 
+    public void setDaysStable(int daysStable) {
+        if (daysStable > 30) {
+            reducedPrice = 0.0F;
+        }
+        this.daysStable = daysStable;
+    }
 }
