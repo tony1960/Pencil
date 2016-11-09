@@ -49,7 +49,7 @@ public class PriceTest {
         assertTrue("True means activation can occur", result);
     }
 
-       @Test
+    @Test
     public void testPriceReductionUpperBound() {
         System.out.println("priceReductionUpperBound");
         instance.initCondtions(10, 31);
@@ -77,12 +77,12 @@ public class PriceTest {
     @Test
     public void testPriceReductionLowerBound() {
         System.out.println("testPriceReductionLowerBound");
-        instance.initCondtions(10,31);
+        instance.initCondtions(10, 31);
 
         Boolean result = instance.priceReduction(7.5F);
         assertTrue("True mean activation can occur", result);
     }
-    
+
     @Test
     public void testPriceReductiomDaysStable() {
         System.out.println("testPriceReductiomDaysStable");
@@ -92,7 +92,7 @@ public class PriceTest {
         Boolean result = instance.priceReduction(8.5F);
         assertTrue("True mean activation can occur ", result);
     }
-    
+
     @Test
     public void testPriceReductiomDaysStableFewer() {
         System.out.println("testPriceReductiomDaysStableFewer");
@@ -121,8 +121,8 @@ public class PriceTest {
         Boolean valid = instance.promotionStillValid();
         assertFalse("True mean promotion is not valid", valid);
     }
-    
-     @Test
+
+    @Test
     public void testPriceFurtherReduction() {
         System.out.println("testPriceFurtherReduction");
         instance.initCondtions(9, 29);
@@ -139,11 +139,13 @@ public class PriceTest {
         Float expectedValue = 0F;
         instance.priceIncrease(11.0F);
         Float reductedPrice = instance.getReducedPrice();
-        Boolean  reducted = false;
-        if (expectedValue.compareTo(reductedPrice) == 0){
+        Boolean reducted = false;
+        if (expectedValue.compareTo(reductedPrice) == 0) {
             reducted = true;
         }
-        assertTrue ("ReductedPrice is reset", reducted);
+        assertTrue("ReductedPrice is reset", reducted);
     }
     
+    
+
 }
