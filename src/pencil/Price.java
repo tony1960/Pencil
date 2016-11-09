@@ -14,9 +14,9 @@ package pencil;
  */
 public class Price {
 
-    float price;
-    float reducedPrice;
-    int daysStable;
+    private float price;
+    private float reducedPrice;
+    private int daysStable;
 
     /**
      * Sets initial conditions
@@ -46,7 +46,8 @@ public class Price {
         low = price * .70F;
 
         if (reducedPrice.compareTo(low) < 0) {
-            if (this.reducedPrice > 0.0F) {
+
+            if (this.reducedPrice > 0) {
                 this.reducedPrice = 0.0F;
                 daysStable = 0;
             }
@@ -61,6 +62,7 @@ public class Price {
             return false;
         }
 
+        this.reducedPrice = reducedPrice;
         return true;
     }
 
@@ -121,10 +123,14 @@ public class Price {
 
         return price;
     }
-    
+
     public float getPrice() {
-       
+
         return price;
+    }
+
+    public int getDaysStable() {
+        return daysStable;
     }
 
 }
