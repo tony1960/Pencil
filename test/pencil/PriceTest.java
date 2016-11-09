@@ -175,7 +175,6 @@ public class PriceTest {
         instance.setDaysStable(31);
         result = instance.priceReduction(7.0F);
         assertTrue("new promotion valie", result);
-
     }
 
 }
